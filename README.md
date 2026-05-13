@@ -34,6 +34,43 @@ API 연결 단계까지 진행하려면 프로젝트 루트에 `.env` 파일이 
 VITE_TMDB_ACCESS_TOKEN=발급받은_TMDB_ACCESS_TOKEN
 ```
 
+## 기존에 포크한 경우
+
+이미 이전 상태에서 포크한 사람은 본인 포크 저장소를 최신 상태로 맞춘 뒤 진행해야 합니다.
+
+GitHub에서 아래 순서대로 진행하세요.
+
+```txt
+본인 포크 저장소 접속
+Sync fork 클릭
+Update branch 클릭
+```
+
+그다음 로컬에 이미 clone 해둔 폴더가 있다면 해당 폴더에서 최신 내용을 받아옵니다.
+
+```bash
+git pull origin main
+```
+
+아직 clone하지 않았다면, `Sync fork`를 먼저 한 뒤 본인 포크 저장소를 clone합니다.
+
+```bash
+git clone 본인_포크_주소
+cd FrontEnd_Movie_2026-1
+npm install
+npm run dev
+```
+
+이미 로컬에서 작업을 시작했다면, 작업 내용을 먼저 커밋한 뒤 최신 내용을 받아오세요.
+
+```bash
+git add .
+git commit -m "작업 내용 저장"
+git pull --rebase origin main
+```
+
+아직 작업한 내용이 없고 동기화가 잘 안 된다면 기존 폴더를 지우고 다시 clone해도 됩니다. 단, 이 방법은 기존 로컬 작업 내용이 사라지므로 작업한 내용이 없는 경우에만 사용하세요.
+
 ## HTML, JS와 다른 점
 
 기존 HTML, JavaScript 방식에서는 브라우저 DOM을 직접 찾아서 수정했습니다.
