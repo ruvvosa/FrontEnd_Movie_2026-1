@@ -1,0 +1,36 @@
+import type { Movie } from '../types/movie'
+
+export const sampleMovies: Movie[] = [
+  {
+    adult: false,
+    backdrop_path: '/628Dep6AxEtDxjZoGP78TsOxYbK.jpg',
+    genre_ids: [28, 53],
+    id: 575265,
+    original_language: 'en',
+    original_title: 'Mission: Impossible - The Final Reckoning',
+    overview: 'Ethan Hunt and the IMF team continue their mission.',
+    popularity: 150.5,
+    poster_path: '/z53D72EAOxGRqdr7KXXWp9dJiDe.jpg',
+    release_date: '2025-05-17',
+    title: '미션 임파서블: 파이널 레코닝',
+    video: false,
+    vote_average: 7.2,
+    vote_count: 1200,
+  },
+  {
+    adult: false,
+    backdrop_path: '/2Nti3gYAX513wvhp8IiLL6ZDyOm.jpg',
+    genre_ids: [16, 12, 10751],
+    id: 950387,
+    original_language: 'en',
+    original_title: 'A Minecraft Movie',
+    overview: 'A group of misfits are pulled into a cubic world.',
+    popularity: 130.2,
+    poster_path: '/yFHHfHcUgGAxziP1C3lLt0q2T4s.jpg',
+    release_date: '2025-04-02',
+    title: '마인크래프트 무비',
+    video: false,
+    vote_average: 6.4,
+    vote_count: 980,
+  },
+]
