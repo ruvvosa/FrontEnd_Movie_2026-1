@@ -1,9 +1,15 @@
-import Header from './components/Header/Header'
-import MovieList from './components/MovieList/MovieList'
-import { sampleMovies } from './mocks/movies'
-import './App.css'
+import Header from "./components/Header/Header";
+import MovieList from "./components/MovieList/MovieList";
+import { sampleMovies } from "./mocks/movies";
+import "./App.css";
+import { useState } from "react";
+interface Movie {
+  id: number;
+  title: string;
+}
 
 function App() {
+  const [movies, setMovies] = useState<Movie[]>([]);
   // TODO 5. 영화 목록을 저장할 state를 만드세요.
   // 힌트: useState를 import한 뒤 아래 형태로 작성합니다.
   // const [movies, setMovies] = useState<Movie[]>([])
@@ -21,7 +27,7 @@ function App() {
         <MovieList movies={sampleMovies} />
       </main>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
