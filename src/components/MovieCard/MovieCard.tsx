@@ -20,6 +20,9 @@ function MovieCard({ movie }: MovieCardProps) {
       {/* 힌트: className은 "movie-card-title"입니다. */}
 
       <div className="movie-card-rating">
+        <div className="movie-card-rating-value">
+          <span>{movie.vote_average.toFixed(1)}</span>
+        </div>
         {/* TODO 3. 평점을 소수점 한 자리까지 렌더링하세요. */}
         {/* 힌트: movie.vote_average.toFixed(1) */}
         {/* 힌트: className은 "movie-card-rating-value"입니다. */}
