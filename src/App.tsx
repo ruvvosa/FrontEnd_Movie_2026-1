@@ -29,7 +29,7 @@ function App() {
 
       <main className="main-content">
         {/* TODO 7. sampleMovies 대신 state에 저장된 movies를 전달하세요. */}
-        <MovieList movies={sampleMovies} />
+        <MovieList movies={movies} />
       </main>
     </>
   );
