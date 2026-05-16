@@ -1,9 +1,9 @@
-import starIcon from '../../assets/star-icon.svg'
-import type { Movie } from '../../types/movie'
-import './MovieCard.css'
+import starIcon from "../../assets/star-icon.svg";
+import type { Movie } from "../../types/movie";
+import "./MovieCard.css";
 
 interface MovieCardProps {
-  movie: Movie
+  movie: Movie;
 }
 
 function MovieCard({ movie }: MovieCardProps) {
@@ -13,7 +13,9 @@ function MovieCard({ movie }: MovieCardProps) {
       {/* 힌트: className은 "movie-card-poster"입니다. */}
       {/* 힌트: src는 IMAGE_BASE_URL + movie.poster_path 입니다. */}
       {/* 힌트: alt는 movie.title을 사용하세요. */}
-
+      <div className="movie-card-title">
+        <p>{movie.title}</p>
+      </div>
       {/* TODO 2. 영화 제목을 렌더링하세요. */}
       {/* 힌트: className은 "movie-card-title"입니다. */}
 
@@ -25,7 +27,7 @@ function MovieCard({ movie }: MovieCardProps) {
         <img className="movie-card-star" src={starIcon} alt="별점" />
       </div>
     </div>
-  )
+  );
 }
 
-export default MovieCard
+export default MovieCard;
