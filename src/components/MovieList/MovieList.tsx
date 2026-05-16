@@ -15,10 +15,6 @@ function MovieList({ movies }: MovieListProps) {
         {movies.map((movie) => (
           <MovieCard key={movie.id} movie={movie} />
         ))}
-        {/* TODO 1. movies 배열을 map으로 반복 렌더링하세요. */}
-        {/* 힌트: MovieCard 컴포넌트를 사용하세요. */}
-        {/* 힌트: MovieCard를 import해야 합니다. */}
-        {/* 힌트: key에는 movie.id를 넣으세요. */}
       </div>
     </section>
   );
