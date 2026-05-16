@@ -1,4 +1,5 @@
 import starIcon from "../../assets/star-icon.svg";
+import { IMAGE_BASE_URL } from "../../constants/movie";
 import type { Movie } from "../../types/movie";
 import "./MovieCard.css";
 
@@ -9,6 +10,9 @@ interface MovieCardProps {
 function MovieCard({ movie }: MovieCardProps) {
   return (
     <div className="movie-card" data-movie-id={movie.id}>
+      <div className="movie-card-poster">
+        <img src={IMAGE_BASE_URL + movie.poster_path} alt={movie.title} />
+      </div>
       {/* TODO 4. 영화 포스터 이미지를 렌더링하세요. */}
       {/* 힌트: className은 "movie-card-poster"입니다. */}
       {/* 힌트: src는 IMAGE_BASE_URL + movie.poster_path 입니다. */}
