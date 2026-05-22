@@ -1,0 +1,54 @@
+.detail-modal {
+  position: fixed;
+  background-color: rgb(227, 113, 113);
+  display: flex;
+  z-index: 1000;
+
+  flex-direction: column;
+  width: 1000px;
+  height: 720px;
+}
+
+.modal-header {
+  height: 72px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  background-color: darkblue;
+}
+
+.modal-content {
+  display: flex;
+  flex-direction: row;
+  background-color: blueviolet;
+  gap: 38px;
+}
+
+.movie-content {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.movie-content {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.content-info {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+}
+
+.modal-rating {
+  display: flex;
+  flex-direction: row;
+}
+
+.rating-content {
+  display: flex;
+  flex-direction: row;
+}

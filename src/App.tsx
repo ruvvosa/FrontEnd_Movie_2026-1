@@ -6,6 +6,7 @@ import { useState, useEffect, use } from "react";
 import type { Movie } from "./types/movie";
 import { fetchPopularMovies } from "./apis/movieApi";
 import { searchMovies } from "./apis/searchMovieApi";
+import DetailModal from "./components/MovieDetail/MovieDetail";
 
 function App() {
   const [movies, setMovies] = useState<Movie[]>([]); //영화 데이터를 저장하는 상태
@@ -61,6 +62,7 @@ function App() {
   return (
     <>
       <Header handleSearch={handleSearch} handleSubmit={handleSubmit} />
+      <DetailModal />
 
       <main className="main-content">
         <MovieList movies={movies} handleMoreMovies={handleMoreMovies} />
