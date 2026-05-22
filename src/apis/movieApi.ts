@@ -3,9 +3,10 @@ import type { Movie, MovieAPIResponse } from "../types/movie";
 
 const ACCESS_TOKEN = import.meta.env.VITE_TMDB_ACCESS_TOKEN;
 
+//api 호출 함수
 export async function fetchPopularMovies(page = 1): Promise<Movie[]> {
   const response = await fetch(
-    `${BASE_URL}movie/popular?language=ko-KR&page=${page}`,
+    `${BASE_URL}movie/popular?language=ko-KR&page=${page}`, //쿼리 문자열
     {
       headers: {
         Authorization: `Bearer ${ACCESS_TOKEN}`,

@@ -4,6 +4,7 @@ import type { Movie, MovieAPIResponse } from "../types/movie";
 const ACCESS_TOKEN = import.meta.env.VITE_TMDB_ACCESS_TOKEN;
 
 export async function searchMovies(query: string, page = 1): Promise<Movie[]> {
+  //자동 URL 인코딩
   const params = new URLSearchParams({
     query,
     language: "ko-KR",
