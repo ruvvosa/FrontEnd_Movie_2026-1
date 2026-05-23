@@ -1,12 +1,17 @@
 .detail-modal {
   position: fixed;
-  background-color: rgb(227, 113, 113);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #212122;
   display: flex;
-  z-index: 1000;
-
   flex-direction: column;
+
   width: 1000px;
+  max-width: 95%;
   height: 720px;
+  gap: 38px;
+  border-radius: 0px 0px 8px 8px;
 }
 
 .modal-header {
@@ -15,32 +20,53 @@
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  background-color: darkblue;
+  border-bottom: 1px solid #f1f1f140;
+  font-family: Roboto;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 24px;
+  letter-spacing: 0.5px;
+  color: #ffffff;
+}
+.modal-header button {
+  left: 946px;
+  position: absolute;
 }
 
 .modal-content {
   display: flex;
   flex-direction: row;
-  background-color: blueviolet;
-  gap: 38px;
+}
+
+.modal-content > img {
+  margin-left: 40px;
 }
 
 .movie-content {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  width: 520px;
+  height: 209px;
+
+  color: #f1f1f1;
+  gap: 16px;
+  margin-left: 38px;
+
+  font-family: Roboto;
+  font-size: 20px;
+  line-height: 24px;
+  letter-spacing: 0.5px;
 }
 
-.movie-content {
+.content-header {
   display: flex;
-  flex-direction: column;
-  gap: 20px;
+  justify-content: space-between;
 }
 
 .content-info {
+  width: 520px;
   display: flex;
-  flex-direction: row;
-  gap: 20px;
+  gap: 16px;
 }
 
 .modal-rating {
@@ -48,7 +74,45 @@
   flex-direction: row;
 }
 
+.my-rating {
+  width: 539px;
+  height: 80px;
+  margin-top: 292px;
+  gap: 12px;
+  border-radius: 16px;
+  padding: 16px;
+  background-color: #383839;
+  font-weight: 700;
+  font-style: Bold;
+  font-size: 20px;
+  line-height: 24px;
+  letter-spacing: 0.5px;
+  vertical-align: middle;
+}
+
 .rating-content {
+  width: 473px;
+  height: 48px;
+  gap: 12px;
   display: flex;
-  flex-direction: row;
+  align-items: center;
+}
+
+.rating-content p:nth-of-type(2) {
+  font-weight: 400;
+}
+
+.rating-content p:last-child {
+  font-size: 18px;
+  font-weight: 400;
+}
+
+.stars {
+  width: 240px;
+  display: flex;
+  align-items: center;
+}
+
+.star {
+  height: 48px;
 }
