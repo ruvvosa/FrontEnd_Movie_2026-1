@@ -5,11 +5,16 @@ import "./MovieCard.css";
 
 interface MovieCardProps {
   movie: Movie;
+  onClick: (movie: Movie) => void;
 }
 
-function MovieCard({ movie }: MovieCardProps) {
+function MovieCard({ movie, onClick }: MovieCardProps) {
   return (
-    <div className="movie-card" data-movie-id={movie.id}>
+    <div
+      className="movie-card"
+      data-movie-id={movie.id}
+      onClick={() => onClick(movie)}
+    >
       <div className="movie-card-poster">
         <img src={IMAGE_BASE_URL + movie.poster_path} alt={movie.title} />
       </div>

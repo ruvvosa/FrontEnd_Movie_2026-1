@@ -1,3 +1,7 @@
+::-webkit-scrollbar {
+  display: none;
+}
+
 .detail-modal {
   position: fixed;
   top: 50%;
@@ -6,7 +10,7 @@
   background-color: #212122;
   display: flex;
   flex-direction: column;
-
+  font-family: Roboto;
   width: 1000px;
   max-width: 95%;
   height: 720px;
@@ -21,7 +25,6 @@
   align-items: center;
   justify-content: center;
   border-bottom: 1px solid #f1f1f140;
-  font-family: Roboto;
   font-weight: 600;
   font-size: 24px;
   line-height: 24px;
@@ -39,6 +42,8 @@
 }
 
 .modal-content > img {
+  width: 360px;
+  height: 560px;
   margin-left: 40px;
 }
 
@@ -46,16 +51,18 @@
   display: flex;
   flex-direction: column;
   width: 520px;
-  height: 209px;
+  height: 560px;
 
   color: #f1f1f1;
   gap: 16px;
   margin-left: 38px;
-
-  font-family: Roboto;
   font-size: 20px;
   line-height: 24px;
   letter-spacing: 0.5px;
+}
+
+.movie-content > p {
+  overflow-y: auto;
 }
 
 .content-header {

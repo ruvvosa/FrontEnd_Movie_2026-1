@@ -1,6 +1,5 @@
 import Header from "./components/Header/Header";
 import MovieList from "./components/MovieList/MovieList";
-import { sampleMovies } from "./mocks/movies";
 import "./App.css";
 import { useState, useEffect, use } from "react";
 import type { Movie } from "./types/movie";
@@ -13,6 +12,8 @@ function App() {
   const [page, setPage] = useState(1); //현재 페이지를 저장하는 상태
   const [search, setSearch] = useState("");
   const [isSearching, setIsSearching] = useState(false);
+  const [isDetailOpen, setDetailOpen] = useState(false); //모달 열린지 확인하는 상태
+  const [selectedMovie, setSelectedMovie] = useState<Movie | null>(null); //어떤 영화가 선택됐는지 저장하는 상태
 
   useEffect(() => {
     //영화 데이터를 불러오는 함수
@@ -42,10 +43,10 @@ function App() {
     setSearch(query);
   }
 
+  //검색어가 없는 경우 인기 영화 목록을 불러옴
   async function handleSubmit() {
-    //검색어가 없는 경우 인기 영화 목록을 불러옴
+    //trim 문자열의 양 끝에 있는 공백 제거
     if (!search.trim()) {
-      //trim 문자열의 양 끝에 있는 공백 제거
       setIsSearching(false);
       const movies = await fetchPopularMovies(1);
       setMovies(movies);
@@ -59,14 +60,35 @@ function App() {
     }
   }
 
+  async function handleMovieClick(movie: Movie) {
+    setSelectedMovie(movie); //선택된 영화 정보를 상태에 저장
+    setDetailOpen(true);
+  }
+
+  let Modal = null;
+
+  if (isDetailOpen && selectedMovie) {
+    Modal = (
+      <DetailModal
+        movie={selectedMovie}
+        isOpen={isDetailOpen}
+        onClose={() => setDetailOpen(false)}
+      />
+    );
+  }
+
   return (
     <>
       <Header handleSearch={handleSearch} handleSubmit={handleSubmit} />
-      <DetailModal />
 
       <main className="main-content">
-        <MovieList movies={movies} handleMoreMovies={handleMoreMovies} />
+        <MovieList
+          movies={movies}
+          handleMoreMovies={handleMoreMovies}
+          onMovieClick={handleMovieClick}
+        />
       </main>
+      {Modal}
     </>
   );
 }
