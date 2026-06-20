@@ -1,11 +1,13 @@
 import Header from "./components/Header/Header";
 import MovieList from "./components/MovieList/MovieList";
 import "./App.css";
-import { useState, useEffect, use } from "react";
+import { useState, useEffect } from "react";
 import type { Movie } from "./types/movie";
 import { fetchPopularMovies } from "./apis/movieApi";
 import { searchMovies } from "./apis/searchMovieApi";
 import DetailModal from "./components/MovieDetail/MovieDetail";
+import {BrowserRouter,Route,Routes} from "react-router-dom";
+import Mypage from "./pages/mypage";
 
 function App() {
   const [movies, setMovies] = useState<Movie[]>([]); //영화 데이터를 저장하는 상태
@@ -71,26 +73,36 @@ function App() {
     Modal = (
       <DetailModal
         movie={selectedMovie}
-        isOpen={isDetailOpen}
+        // isOpen={isDetailOpen} //중복이어서 제거함
         onClose={() => setDetailOpen(false)}
       />
     );
   }
 
   return (
-    <>
-      <Header handleSearch={handleSearch} handleSubmit={handleSubmit} />
-
-      <main className="main-content">
-        <MovieList
-          movies={movies}
-          handleMoreMovies={handleMoreMovies}
-          onMovieClick={handleMovieClick}
+    <BrowserRouter>
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <>
+              <Header handleSearch={handleSearch} handleSubmit={handleSubmit} />
+              <main className="main-content">
+                <MovieList
+                  movies={movies}
+                  handleMoreMovies={handleMoreMovies}
+                  onMovieClick={handleMovieClick}
+                />
+              </main>
+              {Modal}
+            </>
+          }
         />
-      </main>
-      {Modal}
-    </>
+        <Route path="/mypage" element={<Mypage />} />
+      </Routes>
+    </BrowserRouter>
   );
+
 }
 
 export default App;
