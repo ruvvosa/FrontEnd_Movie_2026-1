@@ -6,7 +6,7 @@ import type { Movie } from "./types/movie";
 import { fetchPopularMovies } from "./apis/movieApi";
 import { searchMovies } from "./apis/searchMovieApi";
 import DetailModal from "./components/MovieDetail/MovieDetail";
-import {BrowserRouter,Route,Routes} from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Mypage from "./pages/mypage";
 
 function App() {
@@ -98,11 +98,15 @@ function App() {
             </>
           }
         />
-        <Route path="/mypage" element={<Mypage />} />
+        <Route
+          path="/mypage"
+          element={
+            <Mypage handleSearch={handleSearch} handleSubmit={handleSubmit} />
+          }
+        />
       </Routes>
     </BrowserRouter>
   );
-
 }
 
 export default App;

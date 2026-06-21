@@ -1,8 +1,18 @@
+import Header from "../components/Header/Header";
+import MypageContent from "../components/Mypage/Mypage";
 
-function Mypage() {
-  return (
-    <h1 style={{ color: "white" }}>마이페이지</h1>
-  )
+interface MypageProps {
+  handleSearch: (query: string) => void;
+  handleSubmit: () => void;
 }
 
-export default Mypage
+function Mypage({ handleSearch, handleSubmit }: MypageProps) {
+  return (
+    <>
+      <Header handleSearch={handleSearch} handleSubmit={handleSubmit} />
+      <MypageContent />
+    </>
+  );
+}
+
+export default Mypage;
