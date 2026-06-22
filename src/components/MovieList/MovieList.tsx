@@ -21,7 +21,6 @@ function MovieList({ movies, handleMoreMovies, onMovieClick }: MovieListProps) {
           <MovieCard key={movie.id} movie={movie} onClick={onMovieClick} />
         ))}
       </div>
-      //event handling
       <button
         className="w-[920px] h-[60px] bg-[#f33f3f] text-[#ffffff] border-[1px] border-[solid] border-[#f33f3f] [box-shadow:0px_1px_2px_0px_#1018280d] rounded-[8px] px-[28px] py-[16px] gap-[12px] font-[Inter] text-[18px] font-semibold leading-[28px] tracking-[0%]"
         onClick={handleMoreMovies}

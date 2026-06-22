@@ -5,7 +5,13 @@ import starIcon from "../../assets/star-icon.svg";
 import blankStarIcon from "../../assets/blank_star.svg";
 import heartIcon from "../../assets/heart.svg";
 import blankHeartIcon from "../../assets/blank_heart.svg";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import {
+  saveWantedMovie,
+  getMovieRating,
+  isWantedMovie,
+  saveRatedMovie,
+} from "../../utils/movieStorage";
 
 interface DetailModalProps {
   movie: Movie;
@@ -13,8 +19,30 @@ interface DetailModalProps {
 }
 
 function DetailModal({ movie, onClose }: DetailModalProps) {
-  const [isheart, setIsHeart] = useState(false);
-  const [rating, setRating] = useState<number>(0);
+  const [isheart, setIsHeart] = useState(() => isWantedMovie(movie.id)); //찜을 했는지 안했는지 확인하는 상태
+  const [rating, setRating] = useState<number>(() => getMovieRating(movie.id)); //별점을 가져오는 상태
+
+  // 영화 id가 바뀔 때마다 찜 여부와 별점을 업데이트
+  useEffect(() => {
+    setIsHeart(isWantedMovie(movie.id));
+    setRating(getMovieRating(movie.id));
+  }, [movie.id]);
+
+  // 찜 버튼 클릭 및 로컬스토리지 저장
+  function handleHeartClick() {
+    const nextIsHeart = !isheart;
+    setIsHeart(nextIsHeart);
+    if (nextIsHeart) {
+      saveWantedMovie(movie);
+      return;
+    }
+  }
+
+  // 별점 클릭 및 로컬스토리지 저장
+  function handleRating(nextRating: number) {
+    setRating(nextRating);
+    saveRatedMovie(movie, nextRating);
+  }
   return (
     <div className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-[#212122] flex flex-col w-[1000px] max-w-[95%] h-[720px] gap-[38px] rounded-bl-[8px] rounded-br-[8px]">
       <div className="relative h-[72px] flex items-center justify-center border-b border-[#f1f1f1]/25 font-semibold text-[24px] leading-[24px] tracking-[0.5px] text-white">
@@ -38,7 +66,7 @@ function DetailModal({ movie, onClose }: DetailModalProps) {
                 <span>{movie.vote_average.toFixed(1)}</span>
               </div>
             </div>
-            <button onClick={() => setIsHeart((prev) => !prev)}>
+            <button onClick={handleHeartClick}>
               <img src={isheart ? heartIcon : blankHeartIcon} alt="하트" />
             </button>
           </div>
@@ -51,7 +79,7 @@ function DetailModal({ movie, onClose }: DetailModalProps) {
                   <img
                     className="h-[48px] cursor-pointer"
                     src={i <= rating ? starIcon : blankStarIcon}
-                    onClick={() => setRating(i)}
+                    onClick={() => handleRating(i)}
                     alt="별점"
                   />
                 ))}
