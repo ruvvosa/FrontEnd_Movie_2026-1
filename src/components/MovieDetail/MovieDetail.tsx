@@ -12,6 +12,7 @@ import {
   isWantedMovie,
   saveRatedMovie,
 } from "../../utils/movieStorage";
+import useToastStore from "../../store/toastStore";
 
 interface DetailModalProps {
   movie: Movie;
@@ -21,6 +22,7 @@ interface DetailModalProps {
 function DetailModal({ movie, onClose }: DetailModalProps) {
   const [isheart, setIsHeart] = useState(() => isWantedMovie(movie.id)); //찜을 했는지 안했는지 확인하는 상태
   const [rating, setRating] = useState<number>(() => getMovieRating(movie.id)); //별점을 가져오는 상태
+  const toast = useToastStore(); //토스트 상태를 가져옴
 
   // 영화 id가 바뀔 때마다 찜 여부와 별점을 업데이트
   useEffect(() => {
@@ -34,6 +36,7 @@ function DetailModal({ movie, onClose }: DetailModalProps) {
     setIsHeart(nextIsHeart);
     if (nextIsHeart) {
       saveWantedMovie(movie);
+      toast.showToast("좋아요를 눌렀어요!");
       return;
     }
   }
@@ -42,6 +45,7 @@ function DetailModal({ movie, onClose }: DetailModalProps) {
   function handleRating(nextRating: number) {
     setRating(nextRating);
     saveRatedMovie(movie, nextRating);
+    toast.showToast("리뷰를 남겼어요!");
   }
   return (
     <div className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-[#212122] flex flex-col w-[1000px] max-w-[95%] h-[720px] gap-[38px] rounded-bl-[8px] rounded-br-[8px]">

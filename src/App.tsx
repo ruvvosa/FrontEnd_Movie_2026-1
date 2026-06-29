@@ -6,6 +6,7 @@ import type { Movie } from "./types/movie";
 import { fetchPopularMovies } from "./apis/movieApi";
 import { searchMovies } from "./apis/searchMovieApi";
 import DetailModal from "./components/MovieDetail/MovieDetail";
+import Toast from "./components/Toast/Toast";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Mypage from "./pages/mypage";
 
@@ -105,6 +106,7 @@ function App() {
           }
         />
       </Routes>
+      <Toast />
     </BrowserRouter>
   );
 }
